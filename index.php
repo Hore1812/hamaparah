@@ -473,8 +473,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Gráfico de Horas por Contrato (Plan vs Completado)
         const ctx3 = document.getElementById('graficoHorasTipo').getContext('2d');
         const nombresContrato = <?= json_encode($nombresContrato) ?>;
-        const horasPlanificadasPorContrato = <?= json_encode($horasPlanificadasPorContrato) ?>;
-        const horasCompletadasPorContrato = <?= json_encode($horasCompletadasPorContrato) ?>;
+        const horasPlanificadasPorContrato = <?= json_encode($horasPlanificadasPorContrato) ?>.map(num => parseFloat(num) || 0);
+        const horasCompletadasPorContrato = <?= json_encode($horasCompletadasPorContrato) ?>.map(num => parseFloat(num) || 0);
 
         const numContratos = nombresContrato.length;
         const alturaCanvasContratos = Math.max(200, numContratos * 50);
