@@ -311,7 +311,7 @@ function obtenerColaboradores() {
 
 function obtenerClientes() {
     global $pdo;
-    $sql = "SELECT idcliente, nombrecomercial FROM cliente ORDER BY nombrecomercial";
+    $sql = "SELECT idcliente, nombrecomercial FROM cliente WHERE activo = 1 ORDER BY nombrecomercial";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -325,7 +325,7 @@ function obtenerLideres() {
 
 function obtenerTiposHora() {
     global $pdo;
-    $sql = "SELECT DISTINCT tipohora FROM contratocliente";
+    $sql = "SELECT DISTINCT tipohora FROM contratocliente ORDER BY tipohora ASC";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -354,7 +354,7 @@ function obtenerLiderPorContrato($idContrato) {
 
 function obtenerTemas() { 
     global $pdo;
-    $sql = "SELECT idtema, descripcion FROM tema"; 
+    $sql = "SELECT idtema, descripcion FROM tema ORDER BY descripcion ASC";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
